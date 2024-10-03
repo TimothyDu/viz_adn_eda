@@ -1,0 +1,9 @@
+---
+title: "viz i"
+output: github_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
