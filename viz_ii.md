@@ -435,3 +435,58 @@ tmax_tmin_p/(prcp_dens_p+tmax_date_p) # create a patch and put plots together
     ## (`geom_point()`).
 
 ![](viz_ii_files/figure-gfm/unnamed-chunk-17-2.png)<!-- -->
+
+## data minupulation
+
+control yourt factors:
+
+``` r
+weather_df %>%
+  mutate(
+    name=factor(name), 
+    name = forcats::fct_relevel(name,c("Molokai_HI"))
+  ) %>% 
+  ggplot(aes(x=name, y=tmax, fill=name))+
+  geom_violin(alpha=0.5)
+```
+
+    ## Warning: Removed 17 rows containing non-finite outside the scale range
+    ## (`stat_ydensity()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+
+what if i wanted densities for tmin and tamax simultaneously
+
+``` r
+weather_df %>%
+  filter(name== "CentralPark_NY") %>% 
+  pivot_longer(
+    tmax:tmin,
+    names_to= "observation",
+    values_to ="temperatures"
+  ) %>% 
+  ggplot(aes(x=temperatures, fill=observation)) +
+  geom_density(alpha=0.5)
+```
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+
+now i create three plots using facet and not justing focusing on
+centralpark_ny
+
+``` r
+weather_df %>%
+  pivot_longer(
+    tmax:tmin,
+    names_to= "observation",
+    values_to ="temperatures"
+  ) %>% 
+  ggplot(aes(x=temperatures, fill=observation)) +
+  geom_density(alpha=0.5)+
+  facet_grid(.~name)
+```
+
+    ## Warning: Removed 34 rows containing non-finite outside the scale range
+    ## (`stat_density()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
