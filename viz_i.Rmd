@@ -153,6 +153,29 @@ ggplot(weather_df, aes(x = tmax, y = name)) +
 ## Picking joint bandwidth of 1.54## Warning: Removed 17 rows containing non-finite outside the scale range## (`stat_density_ridges()`).
 ```
 
+```{r}
+ggp_weather =
+  ggplot(weather_df, aes(x = tmin, y = tmax)) + 
+  geom_point(aes(color = name), alpha = .5) 
+ggp_weather 
+
+ggsave("ggp_weather.pdf", ggp_weather, width = 8, height = 5)
+```
+
+```{r}
+ggp_weather %>% 
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = .6,
+  out.width = "90%"
+)
+
+ggp_weather
+```
+
+```{r fig.width = 6, fig.asp = .6, }
+ggp_weather
+```
 
 
 

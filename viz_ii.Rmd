@@ -1,0 +1,15 @@
+---
+title: "viz i"
+output: github_document
+---
+
+```{r setup}
+library(tidyverse)
+library(patchwork)
+```
+
+```{r}
+weather_df=read_csv("./weather_df.csv", na=c("NA","","."))
+
+weather_df
+```
