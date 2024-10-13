@@ -167,3 +167,181 @@ weather_df %>%
     ## (`geom_point()`).
 
 ![](viz_ii_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+## themes
+
+shift the legend
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+  theme(legend.position="bottom")
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+change the overall theme
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    theme_bw() ## theme balck and white 
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    theme_minimal() ## theme balck and white 
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    theme_classic() ## theme balck and white but without borders 
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    ggthemes:: theme_economist() ## theme economist
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    ggthemes::theme_excel() ## theme excel
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+## sequence matters for theme_minimal and bottom position
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    title="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE) +
+    theme_minimal() +
+  theme(legend.position="bottom")
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+## setting options
+
+``` r
+library(tidyverse)
+
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp= .6, #heigh/weigh
+  out.width ="90%"
+)
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+
+options(
+  ggplot2.continous.color ="viridis",
+  ggplot2.continous.fill ="viridis"
+)
+
+scale_color_discrete =scale_color_viridis_d
+scale_fill_discrete =scale_fill_viridis_d
+```
