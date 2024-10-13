@@ -84,3 +84,86 @@ weather_df %>%
     ## (`geom_point()`).
 
 ![](viz_ii_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+## scales
+
+start with the same plot
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )+
+  scale_x_continuous(
+    breaks=c(-15,0,15),
+    labels=c("-15 c", "0","15")
+  ) +
+  scale_y_continuous(
+    trans="sqrt", #squreroot transformation
+    position= "right"
+  )
+```
+
+    ## Warning in transformation$transform(x): NaNs produced
+
+    ## Warning in scale_y_continuous(trans = "sqrt", position = "right"): sqrt
+    ## transformation introduced infinite values.
+
+    ## Warning: Removed 142 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )+
+  scale_x_continuous(
+    breaks=c(-15,0,15),
+    labels=c("-15 c", "0","15")
+  ) +
+  scale_y_continuous(
+    trans="log" #log transformation
+  )
+```
+
+    ## Warning in transformation$transform(x): NaNs produced
+
+    ## Warning in scale_y_continuous(trans = "log"): log-2.718282 transformation
+    ## introduced infinite values.
+
+    ## Warning: Removed 142 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE)
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->

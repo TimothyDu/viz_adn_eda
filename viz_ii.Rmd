@@ -34,3 +34,70 @@ weather_df %>%
   )
 ```
 
+## scales 
+start with the same plot
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )+
+  scale_x_continuous(
+    breaks=c(-15,0,15),
+    labels=c("-15 c", "0","15")
+  ) +
+  scale_y_continuous(
+    trans="sqrt", #squreroot transformation
+    position= "right"
+  )
+
+```
+
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )+
+  scale_x_continuous(
+    breaks=c(-15,0,15),
+    labels=c("-15 c", "0","15")
+  ) +
+  scale_y_continuous(
+    trans="log" #log transformation
+  )
+```
+
+
+```{r}
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  ) +
+  viridis::scale_color_viridis(
+    name = "lacation",
+    discrete = TRUE)
+```
+
+```{r}
+
+```
+
+
+
+
