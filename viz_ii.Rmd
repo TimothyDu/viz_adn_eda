@@ -13,3 +13,24 @@ weather_df=read_csv("./weather_df.csv", na=c("NA","","."))
 
 weather_df
 ```
+
+##remember this plot?
+```{r}
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)
+```
+
+## labels
+```{r}
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )
+```
+

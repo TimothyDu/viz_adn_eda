@@ -52,3 +52,35 @@ weather_df
     ##  9 CentralPark_NY USW00094728 2021-01-09     0   2.8  -4.3
     ## 10 CentralPark_NY USW00094728 2021-01-10     0   5    -1.6
     ## # ℹ 2,180 more rows
+
+\##remember this plot?
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+## labels
+
+``` r
+weather_df %>% 
+  ggplot(aes(x= tmin, y =tmax, color=name)) +
+  geom_point(alpha=0.5)+
+  labs(
+    ttle="temperature plot",
+    x="minimum daily temp",
+    y="maximum daily temp",
+    caption="data from rnoaa pakage; temparature in 2017."
+  )
+```
+
+    ## Warning: Removed 17 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](viz_ii_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
